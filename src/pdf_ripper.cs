@@ -1,23 +1,39 @@
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using Godot;
 using UglyToad.PdfPig;
 using UglyToad.PdfPig.Content;
+using SysDraw = System.Drawing;
 
 public partial class pdf_ripper : Node
 {
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		using (PdfDocument doc = PdfDocument.Open("test.pdf"))
+		using (PdfDocument doc = PdfDocument.Open("test1.pdf"))
 		{
-			foreach(Page p in doc.GetPages())
+			var _testtex = this.GetNode<TextureRect>("MainWindow/TextureRect");
+			var _page = doc.GetPage(1);
+			
+			var _images = _page.GetImages();
+
+			foreach(IPdfImage i in _images)
 			{
-				IReadOnlyList<Letter> letters = p.Letters;
-				string example = string.Join(string.Empty, letters.Select(x => x.Value));
-				GD.Print(example);
+				// GD.Print(i.ToString());
+				Image _img = new Image();
+				GD.Print(i.BitsPerComponent);			
+				_img.LoadJpgFromBuffer(i.RawBytes.ToArray());
+
+				var _tex = ImageTexture.CreateFromImage(_img);
+
+				_testtex.Texture = _tex;
 			}
+
+			// IReadOnlyList<Letter> letters = _page.Letters;
+			// string _text = string.Join(string.Empty, letters.Select(x => x.Value));
+			// GD.Print(_text);
 		}
 	}
 
