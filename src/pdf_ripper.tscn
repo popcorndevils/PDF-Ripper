@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcuiidqwwoppu"]
+
+[ext_resource type="Script" path="res://src/pdf_ripper.cs" id="1_7pgde"]
+
+[node name="PDFRipper" type="Node"]
+script = ExtResource("1_7pgde")
+
+[node name="MainWindow" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0

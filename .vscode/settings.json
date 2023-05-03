@@ -1,0 +1,7 @@
+{
+    "files.exclude": {
+        "**/*.import": true,
+        "**/*.sln": true,
+        "**/*.tscn": true
+    }
+}
