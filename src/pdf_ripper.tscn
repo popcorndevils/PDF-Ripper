@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://bcuiidqwwoppu"]
 
-[ext_resource type="Script" path="res://src/pdf_ripper.cs" id="1_7pgde"]
+[ext_resource type="Script" path="res://src/PDFRipper.cs" id="1_uxxwo"]
 
 [node name="PDFRipper" type="Node"]
-script = ExtResource("1_7pgde")
+script = ExtResource("1_uxxwo")
 
 [node name="MainWindow" type="Control" parent="."]
 layout_mode = 3
@@ -13,10 +13,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="MainWindow"]
+[node name="Grid" type="GridContainer" parent="MainWindow"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+columns = 3
